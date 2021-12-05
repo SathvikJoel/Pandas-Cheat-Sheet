@@ -460,3 +460,69 @@ food.pivot_table(values = "Spend", index = ["Gender","Item"], columns="City")
     for sector.data in sectors()
         df.append(data.nlargest(1, "Revenue"))
     ```
+    
+
+## Lesson 8 : Merging, Joining, Concatenating DataFrames
+
+* `pd.concat` 
+
+    * By default the index is also sticked, use `ignore_index` to diable this
+    * `keys` makes the result a multi index Data frame, keys become the outermost index
+   
+   
+* `df1.append(df2)`
+
+    * No inplace parameter, assign it to new df
+    
+    
+* Inner joins
+    * In venn diagrams the intersection is what the Inner Joins returns
+    * The operation is simple if they have same column names
+    * `week1.merge(week2) `
+    * `on` works only if they have same name, this is what the intersection is taken on
+    * By deafult all the possible combinations are taken in the result
+    * `suffixes` can be used to add it to the other columns
+    * `how` is inner in this case
+    
+    
+* Inner joins across multiple columns
+    * To match on different columns give a list to `on` parameter
+    * There can still be duplicates if there are duplicates in the origianl data frames
+   
+   
+* Outer Joins
+    * `week1.merge(week2, how = 'outer', on = 'some col')`
+    * It is (or) operation thats being done
+    * `indicator` states where the entry is made from ( eg: right_only/both/left_only )
+    * use indicator to get `xor` operation
+
+
+* Left Join
+    * Similar to `vlookup` in excel
+    * Use one of the df as a foundation and pull up data from the other dataframe only if its there in the foundational data frame
+    * `week1.mereg(foods, how = 'left', on = 'Food ID')` the column name must be present on both
+    * Right is very similar ( Just change the order ) 
+   
+ 
+* Names of the columns are Differnt 
+    * `left_on` & `right_on` paramters can be used to solve this issue
+    * use `drop` to reomve the column that has same values
+
+
+* Merging by Indexes with left_index and right_index Parameters
+       
+     * `left_index` and `right_index` can be used if you want to merge on indices( rather than the columns )
+     
+     
+* `.join()` menthod 
+
+    * append but on the other axis
+    
+    * Easy shortcut, concate nate vertiaclly when two data frames share the same index.
+    
+    
+* `pd.merge`
+    
+    * Just an alternate syntax, we have been calling on data frame previously
+    
+    * `right` & `left` paramters will specify the left and right data frames
