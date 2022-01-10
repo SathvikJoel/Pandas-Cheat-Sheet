@@ -526,3 +526,17 @@ food.pivot_table(values = "Spend", index = ["Gender","Item"], columns="City")
     * Just an alternate syntax, we have been calling on data frame previously
     
     * `right` & `left` paramters will specify the left and right data frames
+
+* `pd.concat` vs `pd.append`
+
+  ![concat vs append](images/concatvsappend.png "concat vs append")
+
+  Image credit: [Asha Ponraj]((https://medium.com/analytics-vidhya/a-tip-a-day-python-tip-5-pandas-concat-append-dev-skrol-18e4950cc8cc)) 
+
+  * Append is a specific case of concat, append is just adding by rows ( new rows are added to the dataframe )
+
+  ```Python
+  pd.concat([df1, df2, df3], axis = 0/1])
+
+  df1.append(df2)
+  ```
