@@ -540,3 +540,178 @@ food.pivot_table(values = "Spend", index = ["Gender","Item"], columns="City")
 
   df1.append(df2)
   ```
+
+## Lesson 10 : Working with DateTime Module
+
+```Python
+import datetime as dt
+```
+
+* `dt.date()` & `dt.datetime()`
+    
+    * `someday` = `dt.date(2016, 4, 12)`
+    
+    * `someday.year, someday.month, someday.day`
+    
+    * sometime = `dt.datetime(2016, 1, 12, 8, 13, 57 )` 8:13:57 on 12/1/2016
+    
+    * `str(someday)` 
+    
+    * `someday.year, someday.month, someday.hour, someday.minute. someday.second`
+    
+* The pandas **`Timestamp`** Object
+    
+    ```Python
+    pd.Timestamp("2015-03-31")
+    pd.Timestamp("2015/03/31")
+    pd.Timestamp("2015, 03, 31")
+    pd.Timestamp("19/12/2015")
+    pd.Timestamp("2015-03-31 08:35:15 PM")
+    pd.Timestamp("2015-03-31 21:35:25")` 
+    ```
+    
+    * `pd.Timestamp(dateimeobj)`
+    
+    
+* The pandas **DateTimeIndex** Object
+
+    It is a container to all the Date time objects
+
+    ```Python
+    pd.DatetimeIndex(dates) , dates =["2015-03-31", "2015/03/31"]
+    ```
+    
+    This will be used as Index of a Dataframe or series
+    
+    
+* The `pd.to_datetime()` Method
+    
+    Used to convert series to a DatetimeIndex
+    
+    ```Python
+    pd.to_datetime(series, errors, unit )
+    ```
+    
+    `errors` : `coerce` , this converts anything thats not compatable to a NaT ( not a time )
+    
+    `unit` : `s` , used when Unix times are involved
+    
+* Create Range of Dates with the `pd.date_range()` Method, Part 1
+    
+    ```Python
+    pd.date_range(start, end, periods ,freq)
+    ```
+    
+    Excatly two of {start, end, periods} needs to be given
+    
+    ***Specify start date, end date( inclusive ) and frequency parameter to seperate the date range accordingly***
+    
+    `start` : start date
+    
+    `end`   : end date
+    
+    `freq`  : 
+
+   *D* : One day
+
+   *1D*: One day
+   
+   *2D*: Two days
+   
+   *B* : Buisness days only
+   
+   *W* : Only one day ( default sunday )
+   
+   *W-FRI* : Only one day (Friday)
+   
+   *nH* : nHour
+   
+   *M* : Last day of the month 
+   
+   *MS* : Start of each month
+   
+   *A* : Year end
+   
+  
+* Create Range of Dates with the `pd.date_range(start, periods)` Method, Part 2
+
+    `periods` : 25, number of time stamps from start
+    
+    starts from the `start` stamp and generates period number of stamps according to freq
+    
+* Create Range of Dates with `pd.date_range(end, periods)` Method, Part 3
+
+    starts from the `end` stamp and generates period number of stamps according to freq
+    
+   
+* The `.dt` Accessor
+
+  Similar to `.str` to work with series
+  
+  ```Python
+  datetimeindex.dt.date
+  
+  datetimeindex.dt.weekday_name
+  
+  datetimeindex.dt.is_month_end
+  
+  datetimeindex.dt.is_quarter_start
+  ```
+  
+* If the index of a dataframe is DatetimeIndex then all the functions of slicing, indexing etc.. works as usual
+
+
+* Attributes of `Timestamp` Object
+
+    `someday.month`
+    
+    `someday.week`
+    
+    `someday.is_month_start`
+    
+    `someday.is_month_end`
+    
+    `someday.is_quarter_start`
+    
+    `someday.day`
+    
+    `someday.month_day()`
+    
+    `someday.day_name()`
+ 
+    All these operations work on DatetimeIndex as well
+    
+    
+* The `pd.DateOffset` Object 
+    
+    DatetimeIndex + 5 gives ERROR
+    
+    DatetimeIndex + pd.DateOffset(days = 5)
+    
+    Other Parameters : `days`, `weeks`, `months`, `years`, `minutes`, `seconds`
+
+* Dynamic Offsets
+    
+    Convert all the dates to month end
+    
+    stocks.index + pd.tseries.offsets.MonthEnd()
+    
+    Similarly, `MonthBegin()`, `BMonthEnd()`, `YearBegin()`, `YearEnd()`
+    
+    
+* The `Timedelta` Object
+
+    Represents a spawn of time, can be obtained by taking difference of two Timestamps
+    
+    ```Python
+    pd.Timedelta(days, minutes, hours, seconds, weeks) 
+    ```
+    
+    Deriving Time Delta from a string
+    ```Python
+    pd.Timedelta("5 minutes")
+    
+    pd.Timedelta("6 hours 12 minutes")
+    
+   ```
+    
