@@ -452,6 +452,8 @@ food.pivot_table(values = "Spend", index = ["Gender","Item"], columns="City")
    * sectors.agg(dict)
    * dict has column names as key and aggregates as values
    * you can also apply multiple operations to different columns by using list
+   * Advanced Usage
+      * agg( new_col_name = ('old_col_name' , aff_fxn), new_col_name1 = ('old_col_name', agg_fxn_1, .... )
 
 
 * Iterate through all the groups 
