@@ -452,8 +452,6 @@ food.pivot_table(values = "Spend", index = ["Gender","Item"], columns="City")
    * sectors.agg(dict)
    * dict has column names as key and aggregates as values
    * you can also apply multiple operations to different columns by using list
-   * Advanced Usage
-      * agg( new_col_name = ('old_col_name' , aff_fxn), new_col_name1 = ('old_col_name', agg_fxn_1, .... )
 
 
 * Iterate through all the groups 
@@ -716,4 +714,134 @@ import datetime as dt
     pd.Timedelta("6 hours 12 minutes")
     
    ```
+
+## Lesson 11 : Input and Output Section
+
+#### Pass a URL to `pd.read_csv()` Method
+
+url = "http..."
+
+pd.read_csv(url)
+
+#### Quick Object Conversions
+
+* `series.to_frame()`
+
+    Converts to a Data Frame
+
+* `series.tolist()`
+
+    Converts series to a list
+
+* `series.to_dict()`
+
+    Converts series to a dictionary. Be careful that index has no duplicates before running this code
+
+* `", ".join(series)`
+
+    Converts series to a string with comma seperated
+
+#### Export CSV File with the `to_csv` Method
+
+* `df.to_csv(path.csv, index = False)`
+
+    * `index` :False, to remove the index
+
+    * `coulmns`: List , to specify the columns to be exported
+
+    * `encoding`: 'utf-8', to specify the encoding of the file ( if you ever get a encoding error )
+
+#### Import Excel files with Pandas
+
+> `conda install xlrd openpyxl`
+
+* `pd.read_excel('Data - single Worksheet.xlsx')`
+
+    * If there are multple worksheets in the exel, by default first worksheet is read
+
+    * `sheet_name` : to specify the worksheet name
+
+        * Provide the index position of the worksheet or the name of the worksheet
+
+        * List, to specify multiple worksheets. Output is a dictionary.
+
+        * None, would import all the sheets
     
+
+#### Export Excel File
+
+```Python
+
+excel_writer_obj = pd.ExcelWriter('workbookname.xlsx')
+
+df.to_excel(excel_writer_obj, sheet_name = 'sheetname1')
+
+df.to_excel(excel_writer_obj, sheet_name = 'sheetname2')
+
+excel_writer_obj.save()
+# Until last line, nothing is going to happen
+
+```
+
+## Lesson 12 : Options and Settings in Pandas
+
+#### Changing Options with Attributes and Dot Syntax
+
+```Python
+
+data = np.random.randint(0, 100, [1000, 50])
+
+df = pd.DataFrame(data)
+
+```
+
+```Python
+pd.options.display.max_rows
+```
+Number of rows Pandas displays by default
+
+Set this value to a different value using the same attributes
+
+```Python
+pd.options.display.max_columns
+```
+
+Similar to `max_rows`
+
+#### Changing pandas Options with Methods
+
+* **get options**
+
+```Python
+pd.get_options('max_rows')
+
+pd.get_options('max_columns')
+```
+* **set options**
+
+
+```Python
+pd.set_options('max_rows', 10)
+
+pd.set_options('max_columns', 20)
+```
+
+* reset options
+
+```Python
+pd.reset_options('max_rows')
+
+pd.rest_options('max_columns')
+```
+
+* describe options 
+
+```Python
+pd.describe_option('max_columns')
+
+pd.decribe_option('max_rows')
+```
+
+#### The `precision` Option
+
+Similar to 'max_rows' and 'max_columns'
