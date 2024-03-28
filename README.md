@@ -466,6 +466,10 @@ food.pivot_table(values = "Spend", index = ["Gender","Item"], columns="City")
 
 ## Lesson 8 : Merging, Joining, Concatenating DataFrames
 
+![Different Types of Joins](images/different_joins.jpg)
+Taken from [Data 360 YP YT Channael](https://github.com/Pitsillides91/Python-Tutorials/blob/master/Joins%20and%20Unions/Python%20Joins%20%26%20Union%20Tutorial%20for%20Beginners%20(On%20the%20go).ipynb)
+
+
 * `pd.concat` 
 
     * By default the index is also sticked, use `ignore_index` to diable this
