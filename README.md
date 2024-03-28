@@ -59,15 +59,17 @@ pokemon_names.map(pokemon_types).head(3)
 * df.tail()
 * df.describe()
 * df.info()
-* df.index
-* df.values
-* df.shape
-* df.dtype
-* df.columns
-* df.axes
+
+| Attribute   | Return Example or type                                    |
+|-------------|-----------------------------------------------------------|
+| df.index    | RangeIndex(start=0, stop=3, step=1)                       |
+| df.values   | Numpy Array                                               |
+| df.shape    | (3,3)                                                     |
+| df.columns  | Index(['calories', 'duration', 'diet'], dtype='object')   |
+| df.axes     | [RangeIndex(start=0, stop=3, step=1), Index(['calories', 'duration', 'diet'], dtype='object')] |
 ----
 * df.sum(axis = 1/0)
-* Extract a column from df
+* Extract a column from df, returns a series
   - df["Name"]
 * Extract Two or more Columns from a df
   * df[["Name", "Number", "Position"]]
