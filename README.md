@@ -256,7 +256,7 @@ pokemon_names.map(pokemon_types).head(3)
     * but this looks very wierd I dont want to use it
   
  
-* Apply Method with Row Values
+* Apply Method with Row Values ( This is similar to `map` function that is usually expected )
     * create a function fxn(row) , this takes each row as a argument and gives a value
     * df.apply(fxn, axis = 'columns'), the columns here is a little bit confusing just read up Documentation
 
